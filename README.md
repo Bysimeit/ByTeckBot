@@ -8,4 +8,5 @@ This is a moderation Discord bot still under development.
 
 | Commands    | Description |
 | ----------- | ----------- |
-| /ping       | Latency     |
+| /ping                               | Latency          |
+| /ban [member] [option:reason]       | Ban a member     |

@@ -29,10 +29,10 @@ module.exports = {
         let reason = args.getString("raison");
         if (!reason) reason = "Pas de raison fournie.";
 
-        if (message.user.id === user.id) return message.reply("Tu ne peux pas t'exclure ;)");
+        if (message.user.id === user.id) return message.reply("Tu ne peux pas t'exclure ! :wink:");
         if ((await message.guild.fetchOwner()).id === user.id) return message.reply("Tu ne peux pas exclure le propriétaire du serveur !");
-        if (member && !member.kickable) return message.reply("Je ne peux pas exclure ce membre ! :/");
-        if (member && message.member.roles.highest.comparePostionTo(member.roles.highest) <= 0) return message.reply("Tu ne peux pas exclure un membre qui à un rôle supérieur ou égal à toi !");
+        if (member && !member.kickable) return message.reply("Je ne peux pas exclure ce membre ! :face_with_diagonal_mouth:");
+        if (member && message.member.roles.highest.comparePositionTo(member.roles.highest) <= 0) return message.reply("Tu ne peux pas exclure un membre qui à un rôle supérieur ou égal à toi !");
 
         try {
             await user.send(`Tu as été exclu du serveur ${message.guild.name} par ${message.user.tag} pour la raison : \`${reason}\``)

@@ -25,5 +25,5 @@ module.exports = async bot => {
 
     await rest.put(Routes.applicationCommands(bot.user.id), {body: commands});
 
-    console.log("Slash commands charged successfully !")
+    console.log("Slash commands charged successfully !");
 };

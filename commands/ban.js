@@ -29,10 +29,10 @@ module.exports = {
             let reason = args.getString("raison");
             if (!reason) reason = "Pas de raison fournie.";
 
-            if (message.user.id === user.id) return message.reply("Tu ne peux pas te bannir ;)");
+            if (message.user.id === user.id) return message.reply("Tu ne peux pas te bannir ! :wink:");
             if ((await message.guild.fetchOwner()).id === user.id) return message.reply("Tu ne peux pas bannir le propriétaire du serveur !");
-            if (member && !member.bannable) return message.reply("Je ne peux pas bannir ce membre ! :/");
-            if (member && message.member.roles.highest.comparePostionTo(member.roles.highest) <= 0) return message.reply("Tu ne peux pas bannir un membre qui à un rôle supérieur ou égal à toi !");
+            if (member && !member.bannable) return message.reply("Je ne peux pas bannir ce membre ! :face_with_diagonal_mouth:");
+            if (member && message.member.roles.highest.comparePositionTo(member.roles.highest) <= 0) return message.reply("Tu ne peux pas bannir un membre qui à un rôle supérieur ou égal à toi !");
             if ((await message.guild.bans.fetch()).get(user.id)) return message.reply("Ce membre est déjà banni.");
 
             try {

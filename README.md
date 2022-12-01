@@ -8,6 +8,9 @@ This is a moderation Discord bot still under development.
 
 | Commands    | Description |
 | ----------- | ----------- |
-| /ping                                | Latency           |
-| /ban [member] [option:reason]        | Ban a member      |
-| /kick [member] [option:reason]       | Kick a member     |
+| /ping                                       | Latency             |
+| /ban [member] [option:reason]               | Ban a member        |
+| /unban [user] [option:reason]               | Unban a user        |
+| /kick [member] [option:reason]              | Kick a member       |
+| /mute [member] [time] [option:reason]       | Mute a member       |
+| /unmute [member] [option:reason]            | Unmute a member     |

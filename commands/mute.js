@@ -6,24 +6,28 @@ module.exports = {
     description: "Mute un membre",
     persmission: Discord.PermissionFlagsBits.ModerateMembers,
     dm: false,
+    category: "Modération",
     options: [
         {
             type: "user",
             name: "membre",
             description: "Le membre à mute",
-            required: true
+            required: true,
+            autocomplete: false
         },
         {
             type: "string",
             name: "durée",
             description: "La durée du mute",
-            required: true
+            required: true,
+            autocomplete: false
         },
         {
             type: "string",
             name: "raison",
             description: "La raison du mute",
-            required: false
+            required: false,
+            autocomplete: false
         }
     ],
 
@@ -54,4 +58,4 @@ module.exports = {
 
         await member.timeout(ms(time), reason);
     }
-}
+};

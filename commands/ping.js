@@ -5,8 +5,9 @@ module.exports = {
     description: "Affiche la latence",
     permission: "Aucune",
     dm: true,
+    category: "Utilisateurs",
 
     async run(bot, message, args) {
-        await message.reply(`Ping : \`${bot.ws.ping}\``)
+        await message.reply(`Pong ! :zany_face:\nLatence (ms) : \`${bot.ws.ping}\``);
     }
 };

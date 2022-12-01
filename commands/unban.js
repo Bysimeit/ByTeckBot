@@ -5,18 +5,21 @@ module.exports = {
     description: "Débannir un membre du serveur",
     permission: Discord.PermissionFlagsBits.BanMembers,
     dm: false,
+    category: "Modération",
     options: [
         {
             type: "user",
             name: "utilisateur",
             description: "L'utilisateur' à débannir",
-            required: true
+            required: true,
+            autocomplete: false
         },
         {
             type: "string",
             name: "raison",
             description: "La raison du débannissement",
-            required: false
+            required: false,
+            autocomplete: false
         }
     ],
 

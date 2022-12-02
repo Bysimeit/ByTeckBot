@@ -19,4 +19,4 @@ This is a moderation Discord bot still under development.
 | /unwarn [idWarn]                            | Unwarn a member            |
 | /warnlist [option:member]                   | View a member's warn list  |
 | /rank [option:member]                       | View a member's rank       |
-| /setcaptcha [yes|no] [option:channel]       | Enable/Disable captcha     |
+| /setcaptcha [yes\|no] [option:channel]       | Enable/Disable captcha     |

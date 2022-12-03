@@ -4,7 +4,10 @@ const loadDatabase = require("../loaders/loadDatabase");
 
 module.exports = async bot => {
     bot.db = await loadDatabase();
-    bot.db.connect(function () {
+    bot.db.connect(function (e) {
+        if (e) {
+            console.log(e);
+        }
         console.log("Database connected !");
     });
 

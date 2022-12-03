@@ -4,7 +4,7 @@ const ms = require("ms");
 module.exports = {
     name: "mute",
     description: "Mute un membre",
-    persmission: Discord.PermissionFlagsBits.ModerateMembers,
+    permission: Discord.PermissionFlagsBits.ModerateMembers,
     dm: false,
     category: "Modération",
     options: [

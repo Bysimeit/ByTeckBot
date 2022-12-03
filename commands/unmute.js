@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "unmute",
     description: "Unmute un membre",
-    persmission: Discord.PermissionFlagsBits.ModerateMembers,
+    permission: Discord.PermissionFlagsBits.ModerateMembers,
     dm: false,
     category: "Modération",
     options: [

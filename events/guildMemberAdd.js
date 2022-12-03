@@ -4,7 +4,20 @@ module.exports = async (bot, member) => {
     let db = bot.db;
 
     db.query(`SELECT * FROM server WHERE guild = '${member.guild.id}'`, async (e, req) => {
-        if (req.length < 1 || Boolean(req[0].captcha) === false) {
+        if (req.length < 1) {
+            return;
+        }
+
+        if (req[0].antiraid == "true") {
+            try {
+                await member.user.send(`Vous ne pouvez pas rejoindre le serveur : \`${member.guild.name}\` car il est en mode antiraid !`);
+            } catch (e) {}
+
+            await member.kick("Antiraid actif !");
+            return;
+        }
+        
+        if (req[0].captcha === "false") {
             return;
         }
 

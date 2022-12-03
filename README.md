@@ -19,4 +19,6 @@ This is a moderation Discord bot still under development.
 | /unwarn [idWarn]                            | Unwarn a member            |
 | /warnlist [option:member]                   | View a member's warn list  |
 | /rank [option:member]                       | View a member's rank       |
-| /setcaptcha [yes\|no] [option:channel]       | Enable/Disable captcha     |
+| /setcaptcha [on\|off] [option:channel]      | Enable/Disable captcha     |
+| /setantiraid [on\|off]                      | Enable/Disable user entry  |
+| /ticket                                     | Create support ticket      |

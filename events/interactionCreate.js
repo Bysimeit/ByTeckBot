@@ -12,6 +12,11 @@ module.exports = async (bot, interaction) => {
             let output = choices.filter(c => c.includes(entry));
             await interaction.respond(entry === "" ? output.map(c => ({name: c, value: c})) : output.map(c => ({name: c, value: c})));
         }
+        if (interaction.commandName === "roles") {
+            let choices = ["add", "remove"];
+            let output = choices.filter(c => c.includes(entry));
+            await interaction.respond(entry === "" ? output.map(c => ({name: c, value: c})) : output.map(c => ({name: c, value: c})));
+        }
     }
 
     if (interaction.type === Discord.InteractionType.ApplicationCommand) {
@@ -67,6 +72,57 @@ module.exports = async (bot, interaction) => {
             } catch (e) {}
 
             await interaction.channel.delete();
+        }
+    }
+
+    if (interaction.isStringSelectMenu()) {
+        if (interaction.customId === "reactionrole") {
+            bot.db.query(`SELECT * FROM server WHERE guild = '${interaction.guildId}'`, async (e, req) => {
+                let roles = req[0].reactionrole.split(" ");
+                if (roles.length <= 0) return;
+
+                await interaction.deferReply({ephemeral: true});
+
+                let retiredroles = [];
+                let addroles = [];
+
+                for (let i = 0; i < roles.length; i++) {
+                    if (interaction.member.roles.cache.has(roles[i])) {
+                        try {
+                            await interaction.member.roles.remove(roles[i]);
+                        } catch (e) {
+                            let Embed = new Discord.EmbedBuilder()
+                            .setColor("#007CFF")
+                            .setTitle(`Erreur : Élévation du rôle bot !`)
+                            .setThumbnail(bot.user.displayAvatarURL({dynamic: true}))
+                            .setDescription(`Pour que le bot puisse faire des modifications de rôles, veuillez mettre le rôle \`ByTeckBot\` tout en haut des autres rôles !`)
+                            .setTimestamp()
+                            .setFooter({text: "ByTeckBot"});
+                            return interaction.followUp({embeds: [Embed]});
+                        }
+                        await retiredroles.push(roles[i]);
+                    }
+                }
+
+                for (let i = 0; i < interaction.values.length; i++) {
+                    try {
+                        await interaction.member.roles.add(interaction.values[i]);
+                    } catch (e) {
+                        let Embed = new Discord.EmbedBuilder()
+                        .setColor("#007CFF")
+                        .setTitle(`Erreur : Élévation du rôle bot !`)
+                        .setThumbnail(bot.user.displayAvatarURL({dynamic: true}))
+                        .setDescription(`Pour que le bot puisse faire des modifications de rôles, veuillez mettre le rôle \`ByTeckBot\` tout en haut des autres rôles !`)
+                        .setTimestamp()
+                        .setFooter({text: "ByTeckBot"});
+                        return interaction.followUp({embeds: [Embed]});
+                    }
+                    addroles.push(interaction.values[i]);
+                } 
+
+                //await interaction.followUp({content: `${addroles.length <= 0 ? " " : `Les rôles ${addroles.map(r => `\`${interaction.guild.roles.cache.get(r).name}\``).join(", ")} vous ont été ajoutés.`} ${retiredroles.length <= 0 ? " " : `Les rôles ${retiredroles.map(r => `\`${interaction.guild.roles.cache.get(r).name}\``)} vous on été retirés.`}`, ephemeral: true});
+                await interaction.followUp({content: `Vos rôles ont bien été mis à jour !`, ephemeral: true});
+            });
         }
     }
 };

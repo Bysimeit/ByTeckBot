@@ -12,7 +12,7 @@ bot.commands = new Discord.Collection();
 bot.function = {
     createId: require("./functions/createId"),
     generateCaptcha: require("./functions/generateCaptcha")
-}
+};
 
 loadCommands(bot);
 loadEvents(bot);

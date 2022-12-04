@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const loadSlashCommands = require("../loaders/loadSlashCommands");
 const loadDatabase = require("../loaders/loadDatabase");
+const loadBotStatus = require('../loaders/loadBotStatus');
 
 module.exports = async bot => {
     bot.db = await loadDatabase();
@@ -12,6 +13,7 @@ module.exports = async bot => {
     });
 
     await loadSlashCommands(bot);
+    await loadBotStatus(bot);
 
     console.log(`${bot.user.tag} is online !`);
 };

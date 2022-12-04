@@ -8,6 +8,6 @@ module.exports = {
     category: "Utilisateurs",
 
     async run(bot, message, args) {
-        await message.reply(`Pong ! :zany_face:\nLatence (ms) : \`${bot.ws.ping}\``);
+        await message.reply(`Pong ! :zany_face:\nLatence : \`${bot.ws.ping}\` ms`);
     }
 };
